@@ -611,6 +611,7 @@ textarea {
   margin: 0 auto;
   padding: 30px;
   display: flex;
+  justify-content: space-evenly;
   gap: 30px;
   border: 2px solid #fff;
 }
