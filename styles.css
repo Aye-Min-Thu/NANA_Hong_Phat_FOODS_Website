@@ -337,7 +337,7 @@ textarea {
   box-shadow: var(--shadow);
 }
 .product-card img {
-  height: 250px;
+  height: 350px;
   width: 100%;
   object-fit: cover;
 }
@@ -614,7 +614,7 @@ textarea {
   gap: 30px;
   border: 2px solid #fff;
 }
-.galley-card img {
+.gallery-card img {
   width: 100%;
   height: 400px;
   object-fit: cover;
@@ -634,3 +634,142 @@ textarea {
   }
 }
 
+/* ZALO BUTTON */
+
+.zalo-widget {
+  position: fixed;
+  left: 0;
+  bottom: 65px;
+  z-index: 9999;
+}
+
+.zalo-button {
+  width: 90px;
+  height: 55px;
+
+  border: none;
+  background: white;
+
+  border-radius: 0 30px 30px 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+
+  cursor: pointer;
+
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.2);
+
+  transition: 0.3s;
+}
+
+.zalo-button:hover {
+  width: 105px;
+}
+
+.zalo-button img {
+  width: 40px;
+  height: 40px;
+
+  object-fit: contain;
+}
+
+.zalo-button span {
+  color: #0068ff;
+
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.zalo-overlay {
+  position: fixed;
+
+  inset: 0;
+
+  background: rgba(0, 0, 0, 0.35);
+
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+
+  display: none;
+
+  align-items: center;
+  justify-content: center;
+
+  z-index: 10000;
+}
+
+.zalo-popup {
+  position: relative;
+
+  width: 280px;
+
+  padding: 25px;
+
+  background: white;
+
+  border-radius: 20px;
+
+  text-align: center;
+
+  box-shadow:
+    0 10px 40px rgba(0, 0, 0, 0.35);
+
+  animation: zaloPopup 0.25s ease;
+}
+
+.zalo-popup img {
+  width: 230px;
+  height: 230px;
+
+  object-fit: contain;
+
+  display: block;
+
+  margin: 0 auto;
+}
+
+
+.zalo-popup p {
+  margin: 15px 0 0;
+  font-size: 15px;
+
+  color: #333;
+}
+
+.zalo-close {
+  position: absolute;
+
+  top: 8px;
+  right: 13px;
+
+  width: auto;
+  height: auto;
+
+  border: none;
+  background: transparent;
+
+  color: #555;
+  font-size: 25px;
+  font-weight: 400;
+
+  line-height: 1;
+  padding: 0;
+
+  cursor: pointer;
+}
+
+@keyframes zaloPopup {
+
+  from {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+}

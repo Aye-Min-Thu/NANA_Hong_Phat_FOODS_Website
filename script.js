@@ -48,3 +48,29 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+
+const zaloButton = document.getElementById("zaloButton");
+const zaloOverlay = document.getElementById("zaloOverlay");
+const zaloClose = document.getElementById("zaloClose");
+
+
+// Open QR popup
+zaloButton.addEventListener("click", () => {
+  zaloOverlay.style.display = "flex";
+});
+
+
+// Close QR popup
+zaloClose.addEventListener("click", () => {
+  zaloOverlay.style.display = "none";
+});
+
+
+// Click outside QR box to close
+zaloOverlay.addEventListener("click", (event) => {
+
+  if (event.target === zaloOverlay) {
+    zaloOverlay.style.display = "none";
+  }
+
+});
