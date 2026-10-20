@@ -15,7 +15,7 @@
   <body>
     <header class="site-header">
       <div class="container nav">
-        <a class="brand" href="home.html" aria-label="NANA Home">
+        <a class="brand" href="index.html" aria-label="NANA Home">
           <span class="brand-mark">娜娜</span>
           <span>NANA<small>HỒNG PHÁT</small></span>
         </a>
@@ -66,10 +66,10 @@
           <h2 style="font-family: Georgia, serif; font-size: 42px">
             Gửi yêu cầu
           </h2>
-          <form id="contactForm" class="form">
+          <form id="contactForm" class="form" action="https://formspree.io/f/moejzydp" method="post">
             <input required name="name" placeholder="Họ và tên" />
             <input required type="email" name="email" placeholder="Email" />
-            <input required name="company" placeholder="Công ty" />
+            <input required name="company" type="text" placeholder="Công ty" />
             <textarea required name="message" placeholder="Nội dung"></textarea>
             <button class="btn" type="submit">Gửi yêu cầu</button>
           </form>

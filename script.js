@@ -33,44 +33,66 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  const form = document.querySelector("#contactForm");
-  const notice = document.querySelector("#formNotice");
-  if (form && notice) {
-    form.addEventListener("submit", e => {
-      e.preventDefault();
-      if (!form.checkValidity()) {
-        form.reportValidity();
-        return;
+const form = document.querySelector("#contactForm");
+const notice = document.querySelector("#formNotice");
+
+if (form && notice) {
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+
+    notice.style.display = "block";
+    notice.textContent = "Đang gửi tin nhắn...";
+    
+    try {
+      const response = await fetch(form.action, {
+        method: "POST",
+        body: new FormData(form),
+        headers: {
+          Accept: "application/json"
+        }
+      });
+
+      if (response.ok) {
+        notice.textContent =
+          "Cảm ơn bạn. Chúng tôi đã nhận được tin nhắn của bạn.";
+        form.reset();
+      } else {
+        notice.textContent =
+          "Gửi tin nhắn chưa thành công. Vui lòng thử lại.";
       }
-      notice.style.display = "block";
-      notice.textContent = "Cảm ơn bạn. Chúng tôi đã nhận được tin nhắn của bạn.";
-      form.reset();
+    } catch (error) {
+      notice.textContent =
+        "Đã xảy ra lỗi kết nối. Vui lòng thử lại.";
+    }
+  });
+}
+//zalo popup
+  const zaloButton = document.getElementById("zaloButton");
+  const zaloOverlay = document.getElementById("zaloOverlay");
+  const zaloClose = document.getElementById("zaloClose");
+
+  if (zaloButton && zaloOverlay) {
+    zaloButton.addEventListener("click", () => {
+      zaloOverlay.style.display = "flex";
     });
   }
-});
 
-const zaloButton = document.getElementById("zaloButton");
-const zaloOverlay = document.getElementById("zaloOverlay");
-const zaloClose = document.getElementById("zaloClose");
-
-
-// Open QR popup
-zaloButton.addEventListener("click", () => {
-  zaloOverlay.style.display = "flex";
-});
-
-
-// Close QR popup
-zaloClose.addEventListener("click", () => {
-  zaloOverlay.style.display = "none";
-});
-
-
-// Click outside QR box to close
-zaloOverlay.addEventListener("click", (event) => {
-
-  if (event.target === zaloOverlay) {
-    zaloOverlay.style.display = "none";
+  if (zaloClose && zaloOverlay) {
+    zaloClose.addEventListener("click", () => {
+      zaloOverlay.style.display = "none";
+    });
   }
 
-});
+  if (zaloOverlay) {
+    zaloOverlay.addEventListener("click", (event) => {
+      if (event.target === zaloOverlay) {
+        zaloOverlay.style.display = "none";
+      }
+    });
+  }
+  });
